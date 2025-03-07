@@ -1,0 +1,17 @@
+<h3>Cours d'Angular avec les {{ section }}</h3>
+
+<div [hidden]="hd" [style.backgroundColor]="textColor">A Tekup</div>
+
+<button class="btn btn-outline-primary" (click)="clickHandler()">
+  Click me
+</button>
+<br />
+<input [(ngModel)]="section" type="text" class="form-control" />
+<hr />
+<input
+  #inp
+  [value]="section"
+  (input)="updateSection(inp.value)"
+  type="text"
+  class="form-control"
+/>
