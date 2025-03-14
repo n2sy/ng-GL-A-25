@@ -20,4 +20,8 @@ export class FirstComponent {
   updateSection(newValue: any) {
     this.section = newValue;
   }
+
+  RecupererMessage(msg: any) {
+    alert(msg);
+  }
 }
