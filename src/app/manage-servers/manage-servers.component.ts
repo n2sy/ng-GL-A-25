@@ -6,14 +6,25 @@ import {
 } from '@angular/common';
 import { Component } from '@angular/core';
 import { ShortPipe } from '../pipes/short.pipe';
+import { FilterPipe } from '../pipes/filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-manage-servers',
-  imports: [NgClass, UpperCasePipe, TitleCasePipe, DatePipe, ShortPipe],
+  imports: [
+    NgClass,
+    UpperCasePipe,
+    TitleCasePipe,
+    DatePipe,
+    ShortPipe,
+    FilterPipe,
+    FormsModule,
+  ],
   templateUrl: './manage-servers.component.html',
   styleUrl: './manage-servers.component.css',
 })
 export class ManageServersComponent {
+  selectedStatus = '';
   tabServers = [
     {
       name: 'Production Server',
@@ -47,5 +58,14 @@ export class ManageServersComponent {
       'list-group-item-warning': st == 'offline',
       'list-group-item-danger': st == 'critical',
     };
+  }
+
+  addHandler() {
+    this.tabServers.push({
+      name: 'NEW  SERVER',
+      type: 'small',
+      date_d: new Date(2020, 6, 5),
+      status: 'stable',
+    });
   }
 }

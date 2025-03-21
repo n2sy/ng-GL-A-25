@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Candidat } from '../models/candidat';
+import { NoAvatarPipe } from '../pipes/no-avatar.pipe';
 
 @Component({
   selector: 'app-item',
-  imports: [],
+  imports: [NoAvatarPipe],
   templateUrl: './item.component.html',
   styleUrl: './item.component.css',
 })
