@@ -1,1 +1,11 @@
-<p>manage-servers works!</p>
+<ol class="list-group">
+  @for (server of tabServers; track $index) {
+  <li class="list-group-item" [ngClass]="affecterClass(server.status)">
+    {{ server.name | short : 30 }} | {{ server.type | titlecase }} |
+    {{ server.date_d | date : "fullDate" | uppercase }}
+    <span class="badge text-bg-secondary">
+      {{ server.status }}
+    </span>
+  </li>
+  }
+</ol>
