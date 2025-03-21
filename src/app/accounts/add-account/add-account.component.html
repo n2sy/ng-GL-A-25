@@ -1,1 +1,17 @@
-<p>add-account works!</p>
+<label>Account Name : </label>
+<input #inpName type="text" class="form-control" />
+
+<label>Account Status : </label>
+<select #selectedStatus class="form-control">
+  @for (opt of allOptions; track $index) {
+  <option [value]="opt">{{ opt }}</option>
+
+  }
+</select>
+
+<button
+  (click)="addHandler(inpName.value, selectedStatus.value)"
+  class="btn btn-primary"
+>
+  Add Account
+</button>
