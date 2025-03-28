@@ -1,9 +1,6 @@
 <div class="row">
   <div class="col-5">
-    <app-liste
-      (eventToCv)="recupererCandidatSelectionne($event)"
-      [listeCandidats]="tabCandidats"
-    ></app-liste>
+    <app-liste (eventToCv)="recupererCandidatSelectionne($event)"></app-liste>
   </div>
   <div class="col-7">
     @if (selectedCandidat) {
@@ -13,3 +10,10 @@
     }
   </div>
 </div>
+
+<button (click)="addHandler()" class="btn btn-outline-primary">
+  Add Candidat
+</button>
+<button (click)="showCandidats()" class="btn btn-outline-danger">
+  Affiche Candidats Depuis CV
+</button>
