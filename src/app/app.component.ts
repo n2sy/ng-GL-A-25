@@ -7,6 +7,7 @@ import { HomeAccountsComponent } from './accounts/home-accounts/home-accounts.co
 import { DirectComponent } from './direct/direct.component';
 import { ManageServersComponent } from './manage-servers/manage-servers.component';
 import { RecruterComponent } from './recruter/recruter.component';
+import { GestionCandidatsService } from './services/gestion-candidats.service';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ import { RecruterComponent } from './recruter/recruter.component';
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  providers: [GestionCandidatsService],
 })
 export class AppComponent {
   title = 'ng-GL-A-25';
