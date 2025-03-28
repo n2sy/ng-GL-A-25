@@ -8,6 +8,7 @@ import { DirectComponent } from './direct/direct.component';
 import { ManageServersComponent } from './manage-servers/manage-servers.component';
 import { RecruterComponent } from './recruter/recruter.component';
 import { GestionCandidatsService } from './services/gestion-candidats.service';
+import { ExempleSignalsComponent } from './exemple-signals/exemple-signals.component';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ import { GestionCandidatsService } from './services/gestion-candidats.service';
     DirectComponent,
     ManageServersComponent,
     RecruterComponent,
+    ExempleSignalsComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
