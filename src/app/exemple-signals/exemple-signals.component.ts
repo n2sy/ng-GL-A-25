@@ -15,6 +15,7 @@ export class ExempleSignalsComponent {
   });
 
   constructor() {
+    
     effect(() => {
       console.log('La valeur du signal ' + this.langage() + ' a été modifiée');
     });

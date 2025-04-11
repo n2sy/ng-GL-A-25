@@ -9,6 +9,7 @@ import { ManageServersComponent } from './manage-servers/manage-servers.componen
 import { RecruterComponent } from './recruter/recruter.component';
 import { GestionCandidatsService } from './services/gestion-candidats.service';
 import { ExempleSignalsComponent } from './exemple-signals/exemple-signals.component';
+import { HomeProductsComponent } from "./products/home-products/home-products.component";
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ import { ExempleSignalsComponent } from './exemple-signals/exemple-signals.compo
     ManageServersComponent,
     RecruterComponent,
     ExempleSignalsComponent,
-  ],
+    HomeProductsComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [GestionCandidatsService],

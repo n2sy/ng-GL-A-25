@@ -1,0 +1,24 @@
+<table class="table">
+    <tr>
+        <td>
+            <input #pName placeholder="Product Name" type="text" class="form-control">
+            
+        </td>
+        <td>
+            <input #pPrice placeholder="Price" type="number" class="form-control">
+            
+        </td>
+        <td>
+            <input #pSelected type="checkbox">
+        </td>
+        <td>
+            <button (click)="productService.addProduct(
+                {
+                    name : pName.value,
+                    price : +pPrice.value,
+                    isSelected : pSelected.checked
+                }
+            )" class="btn btn-success">Add</button>
+        </td>
+    </tr>
+</table>

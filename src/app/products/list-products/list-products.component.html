@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Selected</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @for (produit of productService.allProducts(); track $index) {
+            <tr>
+                <td>{{ produit.id }} </td>
+                <td>{{ produit.name }} </td>
+                <td>{{ produit.price | currency:"EUR" }} </td>
+                <td><button (click)="productService.updateSelectedValue(produit.id)" [ngClass]="{'btn-danger': !produit.isSelected,
+                    'btn-success' : produit.isSelected
+                }" class="btn btn-danger">{{ produit.isSelected ? "Selected" : "Not Selected" }}</button> </td>
+                <td><button (click)="productService.deleteProduct(produit.id)" class="btn btn-outline-danger">Delete</button></td>
+                
+            </tr>
+            
+        }
+    </tbody>
+</table>
