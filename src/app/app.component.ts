@@ -22,7 +22,7 @@ import { HomeProductsComponent } from "./products/home-products/home-products.co
     ManageServersComponent,
     RecruterComponent,
     ExempleSignalsComponent,
-    HomeProductsComponent
+    HomeProductsComponent,RouterOutlet
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
