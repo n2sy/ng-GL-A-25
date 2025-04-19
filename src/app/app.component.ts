@@ -9,7 +9,8 @@ import { ManageServersComponent } from './manage-servers/manage-servers.componen
 import { RecruterComponent } from './recruter/recruter.component';
 import { GestionCandidatsService } from './services/gestion-candidats.service';
 import { ExempleSignalsComponent } from './exemple-signals/exemple-signals.component';
-import { HomeProductsComponent } from "./products/home-products/home-products.component";
+import { HomeProductsComponent } from './products/home-products/home-products.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -22,8 +23,10 @@ import { HomeProductsComponent } from "./products/home-products/home-products.co
     ManageServersComponent,
     RecruterComponent,
     ExempleSignalsComponent,
-    HomeProductsComponent,RouterOutlet
-],
+    HomeProductsComponent,
+    RouterOutlet,
+    NavbarComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [GestionCandidatsService],

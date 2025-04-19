@@ -1,0 +1,30 @@
+<form #f="ngForm">
+  <label for="">Login</label>
+  <input ngModel required email name="log" type="text" class="form-control" />
+  <label for="">Password</label>
+  <input
+    #pwd="ngModel"
+    ngModel
+    required
+    minlength="6"
+    name="pwd"
+    type="text"
+    class="form-control"
+  />
+  @if (pwd.invalid && pwd.touched) {
+  <div class="alert alert-danger">Le nbre minimal de caractères est 6</div>
+
+  }
+  <label for="">Langage préféré</label>
+  <select [ngModel]="defaultLanguage" name="langage" class="form-control">
+    <option value=""></option>
+    <option value="js">Javascript</option>
+    <option value="java">Java</option>
+    <option value="php">Php</option>
+  </select>
+
+  <button (click)="submitHandler(f)" class="btn btn-primary">Submit</button>
+  <pre>
+    {{ f.value | json }}
+  </pre>
+</form>
