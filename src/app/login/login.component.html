@@ -1,13 +1,13 @@
 <form #f="ngForm">
   <label for="">Login</label>
-  <input ngModel required email name="log" type="text" class="form-control" />
+  <input ngModel required email name="login" type="text" class="form-control" />
   <label for="">Password</label>
   <input
     #pwd="ngModel"
     ngModel
     required
     minlength="6"
-    name="pwd"
+    name="password"
     type="text"
     class="form-control"
   />
@@ -15,16 +15,35 @@
   <div class="alert alert-danger">Le nbre minimal de caractères est 6</div>
 
   }
-  <label for="">Langage préféré</label>
-  <select [ngModel]="defaultLanguage" name="langage" class="form-control">
-    <option value=""></option>
-    <option value="js">Javascript</option>
-    <option value="java">Java</option>
-    <option value="php">Php</option>
-  </select>
+  
+  <div #in="ngModelGroup" ngModelGroup="infos">
+      <label for="">Langage préféré</label>
+      <select [ngModel]="defaultLanguage" name="langage" class="form-control">
+        <option value=""></option>
+        <option value="js">Javascript</option>
+        <option value="java">Java</option>
+        <option value="php">Php</option>
+      </select>
+      <hr>
+      {{ defaultLanguage}}
+      <hr>
+      <label for="">Commentaire</label>
+      <textarea required [(ngModel)]="myCommentaire" class="form-control" name="commentaire" id="" cols="5" rows="4"></textarea>
+      <hr>
+      {{ myCommentaire}}
+      <hr>
+      
+      @if(in.invalid) {
+        <div class="alert alert-danger">Le textarea est required</div>
+      }
+  </div>
 
   <button (click)="submitHandler(f)" class="btn btn-primary">Submit</button>
+  <button (click)="resetHandler(f)" class="btn btn-danger">Reset</button>
+  <button (click)="generatePwd(f)" class="btn btn-info">Generate Password</button>
   <pre>
     {{ f.value | json }}
   </pre>
 </form>
+
+
