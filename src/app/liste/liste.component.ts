@@ -8,7 +8,7 @@ import { GestionCandidatsService } from '../services/gestion-candidats.service';
   imports: [ItemComponent],
   templateUrl: './liste.component.html',
   styleUrl: './liste.component.css',
-  providers: [GestionCandidatsService],
+//  providers: [GestionCandidatsService],
 })
 export class ListeComponent {
   listeCandidats: Candidat[] = [];
@@ -17,7 +17,22 @@ export class ListeComponent {
   constructor(private candSer: GestionCandidatsService) {}
 
   ngOnInit() {
-    this.listeCandidats = this.candSer.getAllCandidats();
+   // this.listeCandidats = this.candSer.getAllCandidats();
+    this.candSer.getAllCandidatsAPI().subscribe(
+        {
+            next : (response : Candidat[]) => {
+                console.log(response);
+                
+                this.listeCandidats = response;
+            },
+            error : (err) => {
+                console.log(err);
+                alert('Connexion impossible... chargement de données fictives');
+                this.listeCandidats = this.candSer.getAllCandidats();
+                
+            }
+        }
+    )
   }
 
   showCandidats() {

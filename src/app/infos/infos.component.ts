@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink, type ParamMap } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, type ParamMap } from '@angular/router';
 import { GestionCandidatsService } from '../services/gestion-candidats.service';
 import type { Candidat } from '../models/candidat';
 import { NoAvatarPipe } from '../pipes/no-avatar.pipe';
@@ -14,6 +14,7 @@ export class InfosComponent {
   selectedCandidate: Candidat;
   private actRoute = inject(ActivatedRoute);
   private candService = inject(GestionCandidatsService);
+  private router = inject(Router);
 
   ngOnInit() {
     // console.log(this.actRoute.snapshot.params);
@@ -25,5 +26,14 @@ export class InfosComponent {
     //     this.myId = p.get('id');
     //   },
     // });
+  }
+  
+  deleteHandler() {
+    if(confirm('Etes-vous sûr de vouloir supprimer ce candidat ?'))
+         {
+          this.candService.deleteCandidat(this.selectedCandidate._id);
+          this.router.navigateByUrl('/cv');
+            
+         }
   }
 }

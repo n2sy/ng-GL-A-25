@@ -1,1 +1,19 @@
-<p>edit works!</p>
+
+
+<form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
+    
+    <label for="">Prénom</label>
+    <input required type="text" class="form-control" [ngModel]="candidateToUpdate.prenom" name="prenom">
+    <label for="">Nom</label>
+    <input required type="text" class="form-control" [ngModel]="candidateToUpdate.nom" name="nom">
+    <label for="">Age</label>
+    <input type="text" class="form-control" [ngModel]="candidateToUpdate.age" name="age">
+    <label for="">Profession</label>
+    <input type="text" class="form-control" [ngModel]="candidateToUpdate.profession" name="profession">
+    <label for="">avatar</label>
+    <input type="text" class="form-control" [ngModel]="candidateToUpdate.avatar" name="avatar">
+    <br>
+    <button [disabled]="f.invalid" class="btn btn-primary">Modifier</button>
+   
+    
+</form>
