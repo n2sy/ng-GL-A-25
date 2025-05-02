@@ -18,9 +18,18 @@ export class InfosComponent {
 
   ngOnInit() {
     // console.log(this.actRoute.snapshot.params);
-    this.selectedCandidate = this.candService.getCandidateById(
+   this.candService.getCandidateByIdAPI(
       this.actRoute.snapshot.paramMap.get('id')
-    );
+    ).subscribe(
+        {
+            next : (response : Candidat) => {
+                this.selectedCandidate = response
+            },
+            error : (err) => {
+                this.router.navigateByUrl("/not-found")
+            }
+        }
+    )
     // this.actRoute.paramMap.subscribe({
     //   next: (p: ParamMap) => {
     //     this.myId = p.get('id');
@@ -31,8 +40,14 @@ export class InfosComponent {
   deleteHandler() {
     if(confirm('Etes-vous sûr de vouloir supprimer ce candidat ?'))
          {
-          this.candService.deleteCandidat(this.selectedCandidate._id);
-          this.router.navigateByUrl('/cv');
+          this.candService.deleteCandidatAPI(this.selectedCandidate._id).subscribe(
+            {
+                next : (response) => {
+                    alert(response["message"]);
+                    this.router.navigateByUrl('/cv');
+                }
+            }
+          )
             
          }
   }

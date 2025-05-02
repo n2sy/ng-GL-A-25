@@ -1,6 +1,11 @@
+@if (showError) {
+    <div class="alert alert-danger">Login et/ou Mot de passe invalide(s)</div>
+    
+}
+
 <form #f="ngForm">
   <label for="">Login</label>
-  <input ngModel required email name="login" type="text" class="form-control" />
+  <input ngModel required email name="email" type="text" class="form-control" />
   <label for="">Password</label>
   <input
     #pwd="ngModel"
@@ -16,7 +21,7 @@
 
   }
   
-  <div #in="ngModelGroup" ngModelGroup="infos">
+  <!-- <div #in="ngModelGroup" ngModelGroup="infos">
       <label for="">Langage préféré</label>
       <select [ngModel]="defaultLanguage" name="langage" class="form-control">
         <option value=""></option>
@@ -36,11 +41,23 @@
       @if(in.invalid) {
         <div class="alert alert-danger">Le textarea est required</div>
       }
+  </div> -->
+<br>
+  <div class="col-4 offset-4">
+    @if(showRegister) {
+        <button (click)="submitHandler(f)" class="btn btn-danger">Register</button>
+        <button (click)="toggleShowRegister()" class="btn btn-warning">Switch to Login</button>
+        
+    }
+    @else {
+        <button (click)="submitHandler(f)" class="btn btn-primary">Login</button>
+        <button (click)="toggleShowRegister()" class="btn btn-info">Switch to Register</button>
+        
+    }
+    
   </div>
-
-  <button (click)="submitHandler(f)" class="btn btn-primary">Submit</button>
-  <button (click)="resetHandler(f)" class="btn btn-danger">Reset</button>
-  <button (click)="generatePwd(f)" class="btn btn-info">Generate Password</button>
+  <!-- <button (click)="resetHandler(f)" class="btn btn-danger">Reset</button>
+  <button (click)="generatePwd(f)" class="btn btn-info">Generate Password</button> -->
   <pre>
     {{ f.value | json }}
   </pre>

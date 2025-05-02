@@ -29,7 +29,6 @@ export class GestionProduitsService {
     ]);
     effect(() => {
         console.log("Nouvelle liste de produits ", this.allProducts());
-        
     })
   }
   

@@ -18,12 +18,22 @@ export class EditComponent {
     
     ngOnInit() {
         let id = this.actRoute.snapshot.paramMap.get('id');
-        this.candidateToUpdate = this.candSer.getCandidateById(id);
+      this.candSer.getCandidateByIdAPI(id).subscribe(
+            {
+                next :(response : Candidat) => {
+                    this.candidateToUpdate = response
+                }
+            }
+        )
     }
     submitHandler(newValueForm) {
-        newValueForm._id = this.candidateToUpdate._id; 
         
-        this.candSer.updateCandidat(newValueForm);
-        this.router.navigateByUrl("/cv")
+        
+        this.candSer.updateCandidatAPI(newValueForm,this.candidateToUpdate._id).subscribe({
+            next : (response) => {
+                alert(response["message"]);
+                this.router.navigateByUrl("/cv")
+            }
+        })
     }
 }

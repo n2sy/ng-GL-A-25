@@ -1,10 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { Candidat } from '../models/candidat';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class GestionCandidatsService {
-    link = "http://localhost:3000/cv/persons"
+    link = "http://localhost:3000/cv/candidats"
     private http = inject(HttpClient);
   private allCandidats: Candidat[] = [
     new Candidat(1, 'bart', 'simpson', 23, 'ingénieur', 'bart.jpeg'),
@@ -28,9 +28,16 @@ export class GestionCandidatsService {
     return this.allCandidats.find((c) => c._id == id);
   }
   
+  getCandidateByIdAPI(id) {
+    return this.http.get(`${this.link}/${id}`)
+  }
+  
   updateCandidat(uCand) {
     let i = this.allCandidats.findIndex(cand => cand._id == uCand._id);
     this.allCandidats[i] = uCand
+  }
+  updateCandidatAPI(uCand, id) {
+    return this.http.put(`${this.link}/${id}`, uCand)
   }
 
   addCandidat(newCandidate) {
@@ -38,12 +45,16 @@ export class GestionCandidatsService {
     this.allCandidats.push(newCandidate);
   }
   addCandidatAPI(newCandidate) {
-    return this.http.post(this.link + '/free', newCandidate);
+    return this.http.post(this.link, newCandidate);
   }
   
   deleteCandidat(id) {
     let i = this.allCandidats.findIndex(cand => cand._id == id);
     this.allCandidats.splice(i, 1)
+  }
+  
+  deleteCandidatAPI(id) {
+    return this.http.delete(`${this.link}/${id}`)
   }
 
   constructor() {}
